@@ -21,14 +21,15 @@ window.addEventListener("keydown", (e) => {
 );
 
 window.addEventListener("click", (e) => {
-    posLeft = e.clientX;
-    posTop = e.clientY; 
+    let boxPos = boxPlayer.getBoundingClientRect();
+    posLeft = e.clientX - (boxPos.width/2);
+    posTop = e.clientY - (boxPos.height/2); 
 });
 
 function moveBox() {
     const boxRect = boxPlayer.getBoundingClientRect();
-    let boxLeft = boxRect.left + (posLeft - boxRect.left);
-    let boxTop = boxRect.top + (posTop - boxRect.top);    
+    let boxLeft = boxRect.left + (posLeft - boxRect.left) * 0.1;
+    let boxTop = boxRect.top + (posTop - boxRect.top) * 0.1;    
 
     boxPlayer.style.left = boxLeft + 'px';
     boxPlayer.style.top = boxTop + 'px';
